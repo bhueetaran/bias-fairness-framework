@@ -1,89 +1,123 @@
-# Bias & Fairness Evaluation Framework
+# ⚖️ Bias & Fairness Evaluation Framework in Machine Learning
 
-This repository presents a modular and reproducible framework for detecting,
-evaluating, and mitigating bias in machine learning models, with integrated
-explainability using SHAP.
+End-to-end framework for detecting, evaluating, and mitigating bias in machine learning models, with integrated explainability using SHAP.
 
-The framework follows responsible AI principles and is designed to be
-dataset-agnostic, enabling its application across diverse domains.
+📊 Achieved ~97% reduction in demographic parity gap on real-world data with minimal accuracy trade-off.
 
 ---
 
-## 🧩 Framework Components
+## 🚀 Overview
 
-The system consists of the following stages:
+This project implements a modular and reproducible pipeline for responsible AI. It enables:
 
-- **Bias Detection**
-  - Data distribution analysis
-  - Group-wise outcome disparity
-  - Performance comparison across sensitive groups
+* Detection of bias across sensitive groups
+* Evaluation using standard fairness metrics
+* Bias mitigation using constrained optimization
+* Model interpretability using SHAP
 
-- **Fairness Evaluation**
-  - Demographic Parity
-  - Equalized Odds
-  - Group-wise accuracy analysis
+The framework is dataset-agnostic and can be applied across different domains.
 
-- **Bias Mitigation**
-  - Fairness-constrained optimization using the Exponentiated Gradient method
-  - Explicit analysis of fairness–accuracy trade-offs
+---
 
-- **Explainability**
-  - SHAP-based global feature importance
-  - Group-wise SHAP comparison to identify proxy bias
-  - Post-mitigation interpretability analysis
+## ⚙️ Tech Stack
+
+* Python
+* Scikit-learn
+* Fairlearn
+* SHAP
+* Pandas, NumPy
+* Matplotlib, Seaborn
+
+---
+
+## 🧩 Pipeline
+
+### 1. Bias Detection
+
+* Data distribution analysis
+* Group-wise outcome disparity
+* Performance comparison across sensitive groups
+
+### 2. Fairness Evaluation
+
+* Demographic Parity
+* Equalized Odds
+* Group-wise accuracy
+
+### 3. Bias Mitigation
+
+* Exponentiated Gradient optimization
+* Fairness–accuracy trade-off analysis
+
+### 4. Explainability
+
+* SHAP-based feature importance
+* Group-wise explanation comparison
+* Detection of proxy bias features
 
 ---
 
 ## 🧪 Methodology
 
-The framework is evaluated in two stages to ensure methodological rigor:
+### Stage 1: Synthetic Dataset (Validation)
 
-### Stage 1: Synthetic Dataset (Framework Validation)
-A controlled synthetic dataset with intentionally introduced bias is used to
-validate the correctness and robustness of the framework. This enables
-reproducible testing under known bias conditions.
+A controlled dataset with intentionally introduced bias is used to validate the correctness of the framework under known conditions.
 
-### Stage 2: Real Dataset (UCI Adult Benchmark)
-The same pipeline is applied to the UCI Adult Income dataset, a standard
-benchmark in fairness research, to demonstrate applicability to real-world
-bias scenarios involving sensitive attributes.
+### Stage 2: Real Dataset (UCI Adult)
+
+The same pipeline is applied to the UCI Adult Income dataset to demonstrate real-world applicability.
 
 ---
 
-## ⚖️ Fairness Metrics
+## 📊 Results
 
-The following metrics are used for evaluation:
+### Synthetic Dataset
 
-- Demographic Parity Difference
-- Equalized Odds Difference
-- Group-wise accuracy comparison
+| Metric             | Before | After |
+| ------------------ | ------ | ----- |
+| Accuracy           | 0.87   | 0.756 |
+| Demographic Parity | 0.169  | 0.033 |
+| Equalized Odds     | 0.338  | 0.353 |
 
-Both pre- and post-mitigation results are analyzed to quantify fairness
-improvements.
+✔️ Significant reduction in bias
+✔️ Controlled accuracy trade-off
+
+---
+
+### Real Dataset (UCI Adult)
+
+| Metric             | Before | After  |
+| ------------------ | ------ | ------ |
+| Accuracy           | 0.844  | 0.828  |
+| Demographic Parity | 0.180  | 0.0055 |
+| Equalized Odds     | 0.111  | 0.336  |
+
+🔥 ~97% reduction in demographic parity gap
+✔️ Minimal accuracy loss (~1.5%)
+⚠️ Trade-off observed in equalized odds
 
 ---
 
 ## 🔍 Explainability with SHAP
 
-SHAP is employed to:
-- Interpret model decisions at the feature level
-- Compare feature influence across sensitive groups
-- Diagnose proxy features contributing to biased outcomes
-
-For fairness-constrained models, SHAP explanations are generated using a
-representative predictor from the learned ensemble.
+* Identifies feature-level contributions to predictions
+* Enables group-wise comparison to detect proxy bias
+* Provides interpretability before and after mitigation
 
 ---
 
-## 🔁 How to Use
+## ▶️ How to Run
 
-1. Clone the repository and install dependencies using `requirements.txt`.
-2. Run the notebook `bias_fairness_framework.ipynb` to execute the full bias and fairness pipeline.
+```bash
+pip install -r requirements.txt
+jupyter notebook bias_fairness_framework.ipynb
+```
 
-### Adapting to New Data
-To use a custom dataset, replace the data-loading cell in **Stage 2** and define:
-- feature matrix (`X`)
-- target variable (`y`)
-- sensitive attribute
+---
 
-All fairness metrics, mitigation, and SHAP explanations will be computed automatically.
+## 💡 Key Takeaways
+
+* Demonstrates practical implementation of responsible AI
+* Highlights fairness–accuracy trade-offs in ML systems
+* Combines fairness metrics with explainability
+* Applicable to both synthetic and real-world datasets
