@@ -92,7 +92,7 @@ The same pipeline is applied to the UCI Adult Income dataset to demonstrate real
 | Demographic Parity | 0.180  | 0.0055 |
 | Equalized Odds     | 0.111  | 0.336  |
 
-🔥 ~97% reduction in demographic parity gap
+✔️ ~97% reduction in demographic parity gap
 ✔️ Minimal accuracy loss (~1.5%)
 ⚠️ Trade-off observed in equalized odds
 
@@ -103,15 +103,6 @@ The same pipeline is applied to the UCI Adult Income dataset to demonstrate real
 * Identifies feature-level contributions to predictions
 * Enables group-wise comparison to detect proxy bias
 * Provides interpretability before and after mitigation
-
----
-
-## ▶️ How to Run
-
-```bash
-pip install -r requirements.txt
-jupyter notebook bias_fairness_framework.ipynb
-```
 
 ---
 
